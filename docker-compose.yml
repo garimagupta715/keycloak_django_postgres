@@ -1,0 +1,37 @@
+version: '2'
+
+services:
+  app:
+    build: ./app
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app:/app
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
+    environment:
+      - DB_HOST=postgres
+      - DB_NAME=idm_keycloak_demo
+      - DB_USER=postgres
+      - DB_PASS=admin
+    depends_on:
+      - postgres
+  keycloak:
+    restart: always
+    build: ./keycloak
+    environment:
+      - KC_PG_HOST=postgres 
+      - POSTGRES_DATABASE=idm_keycloak_demo
+      - KC_PG_USER=postgres
+      - KC_PG_PASSWORD=admin
+    depends_on:
+      - postgres          
+  postgres:
+    image: postgres:10-alpine
+    ports:
+      - "5432:5432"
+    environment:
+         POSTGRES_USER: 'postgres'
+         POSTGRES_PASSWORD: 'admin'
+         POSTGRES_DB: 'idm_keycloak_demo'

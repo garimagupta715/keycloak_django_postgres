@@ -1,0 +1,44 @@
+// @TODO should come from CDN and shared with frontend app
+// at the very least the third party css e.g. bp3, ag, etc
+@import "../../../node_modules/@oaknorthai/ui-theme/acorn/index.scss";
+
+@import "../../../../frontend/apps/platform/src/marmot-ui/layouts/layouts.scss";
+@import "../../../../frontend/apps/platform/src/landing/pages/Landing.scss";
+@import "../../../../frontend/apps/platform/src/marmot-ui/components/NavBar/NavBar.scss";
+@import "../../../../frontend/apps/platform/src/marmot-ui/components/PageHeading/PageHeading.scss";
+
+.extraNarrow,
+.landing {
+  max-width: 350px !important;
+}
+
+.ssoDivider {
+  position: relative;
+  display: block;
+  text-align: center;
+  color: #5c7080;
+  margin: var(--spacing-multiplier) 0;
+  z-index: 0;
+
+  span {
+    background: white;
+    padding: 0 var(--spacing-multiplier);
+  }
+
+  &:before {
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+    content: " ";
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: -1;
+  }
+}
+
+.message {
+  margin-bottom: var(--spacing-multiplier);
+}
