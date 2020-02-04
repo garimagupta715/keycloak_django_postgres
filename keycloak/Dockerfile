@@ -4,16 +4,6 @@ FROM jboss/keycloak:latest
 ENV KEYCLOAK_ADMIN_USER admin
 ENV KEYCLOAK_ADMIN_PASSWORD admin
 
-#ENV KEYCLOAK_CONTEXT_PATH u/auth
-
-#COPY docker-entrypoint.sh /opt/jboss 
-
-#COPY docker-entrypoint.sh /opt/jboss/tools
-#COPY profile.properties /opt/jboss/keycloak/standalone/configuration
-
-#CMD ["--server-config", "standalone-ha.xml"]
-#CMD ["--server-config", "standalone-ha.xml"]
-
 # configure for postgres
 COPY standalone.xml /opt/jboss/keycloak/standalone/configuration/standalone.xml
 
